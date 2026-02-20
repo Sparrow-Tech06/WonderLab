@@ -1,0 +1,30 @@
+[
+  {
+    "icon": "bi-person",
+    "title": "Profile",
+    "link": "#"
+  },
+  {
+    "icon": "bi-bookmark",
+    "title": "Saved",
+    "link": "collection/save.html"
+  },
+  {
+    "icon": "bi-lightbulb",
+    "title": "Suggest Story",
+    "link": "#"
+  },
+  {
+    "divider": true
+  },
+  {
+    "icon": "bi-shield",
+    "title": "Privacy",
+    "link": "#"
+  },
+  {
+    "icon": "bi-question",
+    "title": "FAQ",
+    "link": "#"
+  }
+]
