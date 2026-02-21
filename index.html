@@ -150,12 +150,12 @@ function fetchStories() {
   clearTimeout(loadTimeout);
   isLoaded = false;
 
-  // 20s timeout - exact feature requested
+  // 10s timeout - exact feature requested
   loadTimeout = setTimeout(() => {
     if (!isLoaded) {
       showError();
     }
-  }, 20000);
+  }, 10000);
 
   fetch("shtories.json")
     .then(r => {
