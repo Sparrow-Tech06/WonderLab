@@ -1,4 +1,4 @@
-<style>
+
 :root{
   --bg:#ffffff;
   --text:#000000;
@@ -64,4 +64,3 @@ body{background:var(--bg);font-family:'Inter',system-ui,sans-serif;color:var(--t
 #story-container:not(.loading)>.col-12:nth-child(5n+5) .story-card{background:#ede9fe;}
 
 .search-btn{border:var(--border);border-radius:12px;background:var(--card);}
-</style>
