@@ -266,7 +266,7 @@ fetch("sidebar.json")
     renderSidebar(data);
     localStorage.setItem("sidebar", JSON.stringify(data));
   })
-  .catch(() => {
+ /* .catch(() => {
     // Fallback sidebar if offline
     renderSidebar([
       { icon: 'bi-house', title: 'Home', link: '#' },
@@ -275,7 +275,7 @@ fetch("sidebar.json")
       { divider: true },
       { icon: 'bi-gear', title: 'Settings', link: '#' }
     ]);
-  });
+  });  */
 
 function renderSidebar(data) {
   let h = "";
