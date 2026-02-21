@@ -115,6 +115,7 @@ body{background:var(--bg);font-family:'Inter',system-ui,sans-serif;color:var(--t
 
 /* ========= Skeleton ========= */
 const box=document.getElementById("story-container");
+let loadTimeout;
 
 function skeleton(n=5){
 box.classList.add("loading");
@@ -133,25 +134,52 @@ box.innerHTML=h;
 
 skeleton();
 
-/* ========= Stories fetch ========= */
+/* ========= Error UI ========= */
+
+function showError(){
+box.classList.remove("loading");
+box.innerHTML=`
+<div class="col-12 d-flex justify-content-center">
+<section class="text-center py-5 w-100">
+<div class="mx-auto mb-3 skeleton" id="error-img-skeleton" style="width:180px;height:180px;border-radius:16px;"></div>
+<img src="error.png" alt="Error"
+class="img-fluid d-none"
+style="max-width:180px"
+onload="this.classList.remove('d-none');document.getElementById('error-img-skeleton').style.display='none';">
+
+<h5 class="mt-4 fw-semibold">Something went wrong</h5>
+<p class="text-muted small mb-3">We couldn't load your stories right now.</p>
+<button class="btn btn-dark btn-sm px-4" onclick="location.reload()">Retry</button>
+</section>
+</div>`;
+}
+
+/* ========= Stories fetch with 20s timeout ========= */
 
 function fetchStories(){
+
+// 20 second timeout safety
+loadTimeout=setTimeout(()=>{
+showError();
+},20000);
+
 fetch("shtories.json")
-.then(r=>r.json())
+.then(r=>{
+if(!r.ok) throw new Error("Fetch failed");
+return r.json();
+})
 .then(data=>{
+clearTimeout(loadTimeout);
 render(data);
 box.classList.remove("loading");
 })
 .catch(()=>{
-console.log("Stories failed → retrying...");
-setTimeout(fetchStories,4000);
+clearTimeout(loadTimeout);
+showError();
 });
 }
 
 fetchStories();
-
-/* Auto reload when internet back */
-window.addEventListener("online",fetchStories);
 
 /* ========= Render ========= */
 
@@ -216,6 +244,7 @@ if(curr>60 && curr>prev){header.classList.add("navbar-hidden");}
 else{header.classList.remove("navbar-hidden");}
 prev=curr;
 });
+
 </script>
 </body>
 </html>
