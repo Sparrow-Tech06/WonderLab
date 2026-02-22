@@ -40,6 +40,17 @@ body{background:var(--bg);font-family:'Inter',system-ui,sans-serif;color:var(--t
 .offcanvas a{color:var(--text);text-decoration:none;padding:10px;display:flex;gap:10px;align-items:center;}
 .offcanvas a:hover{background:rgba(0,0,0,0.05);}
 
+.offcanvas-body > a > i { padding:8px 12px; border-radius:8px; font-size:18px; color:#fff; }
+/* Sidebar icon background colors using nth-child */
+.offcanvas-body a:nth-child(1) i { background: #4f46e5; }
+.offcanvas-body a:nth-child(2) i { background: #06b6d4; }
+.offcanvas-body a:nth-child(3) i { background: #10b981; }
+.offcanvas-body hr:nth-child(4) { margin: 12px 0; }
+.offcanvas-body a:nth-child(5) i { background: #f59e0b; }
+.offcanvas-body a:nth-child(6) i { background: #ef4444; }
+.offcanvas-body a:nth-child(7) i { background: #8b5cf6; }
+.offcanvas-body a:nth-child(8) i { background: #ec4899; }
+
 /* Card */
 .story-card{border-radius:var(--radius);border:var(--border);background:var(--card);overflow:hidden;transition:.25s;}
 .story-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
