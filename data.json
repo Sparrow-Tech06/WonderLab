@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Numbers",
+    "subtitle": "All about numbers",
+    "icon": "bi bi-123",
+    "bg": "bg-success-subtle"
+  },
+  {
+    "title": "Spelling",
+    "subtitle": "Reading some words",
+    "icon": "bi bi-book",
+    "bg": "bg-warning-subtle"
+  },
+  {
+    "title": "Puzzle",
+    "subtitle": "Arrange letters",
+    "icon": "bi bi-puzzle",
+    "bg": "bg-info-subtle"
+  },
+  {
+    "title": "Drawing",
+    "subtitle": "Coloring & creative",
+    "icon": "bi bi-palette",
+    "bg": "bg-primary-subtle"
+  }
+]
