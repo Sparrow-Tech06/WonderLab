@@ -1,2 +1,0 @@
-<!-- This Is My Webapp Curent Version -->
- 25.12.25
