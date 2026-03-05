@@ -1,25 +1,57 @@
 [
   {
-    "title": "Numbers",
-    "subtitle": "All about numbers",
+    "title": {
+      "en": "Numbers",
+      "bn": "সংখ্যা",
+      "hi": "संख्या"
+    },
+    "subtitle": {
+      "en": "All about numbers",
+      "bn": "সংখ্যা সম্পর্কে",
+      "hi": "संख्या के बारे में"
+    },
     "icon": "bi bi-123",
     "bg": "bg-success-subtle"
   },
   {
-    "title": "Spelling",
-    "subtitle": "Reading some words",
+    "title": {
+      "en": "Spelling",
+      "bn": "বানান",
+      "hi": "वर्तनी"
+    },
+    "subtitle": {
+      "en": "Reading some words",
+      "bn": "কিছু শব্দ পড়া",
+      "hi": "कुछ शब्द पढ़ें"
+    },
     "icon": "bi bi-book",
     "bg": "bg-warning-subtle"
   },
   {
-    "title": "Puzzle",
-    "subtitle": "Arrange letters",
+    "title": {
+      "en": "Puzzle",
+      "bn": "পাজল",
+      "hi": "पहेली"
+    },
+    "subtitle": {
+      "en": "Arrange letters",
+      "bn": "অক্ষর সাজাও",
+      "hi": "अक्षर व्यवस्थित करें"
+    },
     "icon": "bi bi-puzzle",
     "bg": "bg-info-subtle"
   },
   {
-    "title": "Drawing",
-    "subtitle": "Coloring & creative",
+    "title": {
+      "en": "Drawing",
+      "bn": "ড্রয়িং",
+      "hi": "चित्रकारी"
+    },
+    "subtitle": {
+      "en": "Coloring & creative",
+      "bn": "রং ও সৃজনশীলতা",
+      "hi": "रंग और रचनात्मक"
+    },
     "icon": "bi bi-palette",
     "bg": "bg-primary-subtle"
   }
