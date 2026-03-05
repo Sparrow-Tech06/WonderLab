@@ -3,12 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prayog App</title>
+<title>Prayog</title>
 
-<!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Bootstrap Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
 <style>
@@ -16,44 +13,28 @@ body{
     background: linear-gradient(135deg,#fdfbfb,#ebedee);
     font-family: 'Poppins', sans-serif;
 }
-
-/* Header */
 .app-header{
-    background:#ffffff;
+    background:#fff;
     padding:15px 20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
     box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
-
 .app-name{
     font-weight:700;
     font-size:20px;
-    color:#4a4a4a;
 }
-
-/* Card Style */
 .custom-card{
     border:none;
     border-radius:20px;
     padding:25px;
-    transition:0.3s;
+    transition:.3s;
     cursor:pointer;
 }
-
 .custom-card:hover{
     transform:translateY(-5px);
     box-shadow:0 10px 25px rgba(0,0,0,0.1);
-}
-
-.card-icon{
-    font-size:40px;
-}
-
-/* Settings Page */
-.settings-page{
-    display:none;
 }
 </style>
 </head>
@@ -64,82 +45,34 @@ body{
     <div class="app-name">Prayog</div>
     <div>
         <i class="bi bi-bell fs-5 me-3"></i>
-        <i class="bi bi-gear fs-5" onclick="openSettings()"></i>
+        <a href="settings.html">
+            <i class="bi bi-gear fs-5 text-dark"></i>
+        </a>
     </div>
 </div>
 
-<!-- MAIN PAGE -->
-<div class="container mt-4" id="homePage">
-    <div class="row g-4" id="cardContainer">
-        <!-- Cards loaded from JSON -->
-    </div>
-</div>
-
-<!-- SETTINGS PAGE -->
-<div class="container mt-4 settings-page" id="settingsPage">
-    <button class="btn btn-light mb-3" onclick="closeSettings()">
-        <i class="bi bi-arrow-left"></i> Back
-    </button>
-
-    <div class="card p-3 mb-3">
-        <h5 data-lang="select_language">Select Language</h5>
-        <select class="form-select" onchange="changeLanguage(this.value)">
-            <option value="en">English</option>
-            <option value="bn">Bengali</option>
-            <option value="hi">Hindi</option>
-        </select>
-    </div>
-
-    <div class="card p-3 mb-3">
-        <h5 data-lang="privacy_policy">Privacy Policy</h5>
-    </div>
-
-    <div class="card p-3 mb-3">
-        <h5 data-lang="about">About</h5>
-    </div>
+<!-- BODY -->
+<div class="container mt-4">
+    <div class="row g-4" id="cardContainer"></div>
 </div>
 
 <script>
 
 /* ===============================
-   LANGUAGE SYSTEM
+   LANGUAGE APPLY
 =================================*/
 
 const translations = {
-    en: {
-        select_language: "Select Language",
-        privacy_policy: "Privacy Policy",
-        about: "About"
-    },
-    bn: {
-        select_language: "ভাষা নির্বাচন করুন",
-        privacy_policy: "প্রাইভেসি পলিসি",
-        about: "অ্যাবাউট"
-    },
-    hi: {
-        select_language: "भाषा चुनें",
-        privacy_policy: "गोपनीयता नीति",
-        about: "के बारे में"
-    }
+    en: {},
+    bn: {},
+    hi: {}
 };
 
-function applyLanguage(lang){
-    document.querySelectorAll("[data-lang]").forEach(el=>{
-        el.innerText = translations[lang][el.getAttribute("data-lang")];
-    });
-}
-
-function changeLanguage(lang){
-    localStorage.setItem("appLang", lang);
-    applyLanguage(lang);
-}
-
 const savedLang = localStorage.getItem("appLang") || "en";
-applyLanguage(savedLang);
 
 
 /* ===============================
-   LOAD CARD DATA FROM JSON
+   LOAD CARDS FROM JSON
 =================================*/
 
 fetch("data.json")
@@ -149,39 +82,22 @@ fetch("data.json")
     let container = document.getElementById("cardContainer");
 
     data.forEach(item => {
-
         container.innerHTML += `
         <div class="col-6">
             <div class="custom-card ${item.bg}">
-                <div class="card-icon text-center">
+                <div class="text-center fs-1">
                     <i class="${item.icon}"></i>
                 </div>
-                <h5 class="mt-3 text-center">${item.title}</h5>
-                <p class="text-center small">${item.subtitle}</p>
+                <h5 class="mt-3 text-center">${item.title[savedLang]}</h5>
+                <p class="text-center small">${item.subtitle[savedLang]}</p>
             </div>
         </div>
         `;
-
     });
 
 });
 
-
-/* ===============================
-   PAGE SWITCH
-=================================*/
-
-function openSettings(){
-    document.getElementById("homePage").style.display="none";
-    document.getElementById("settingsPage").style.display="block";
-}
-
-function closeSettings(){
-    document.getElementById("homePage").style.display="block";
-    document.getElementById("settingsPage").style.display="none";
-}
-
 </script>
-
 </body>
 </html>
+
