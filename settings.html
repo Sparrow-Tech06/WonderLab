@@ -31,7 +31,7 @@ body{
             <i class="bi bi-arrow-left"></i>
         </a>
     </div>
-    <div class="fw-bold">Settings</div>
+    <div class="fw-bold" data-lang="settings">Settings</div>
     <div></div>
 </div>
 
@@ -39,8 +39,8 @@ body{
 
     <!-- Select Language -->
     <div class="card p-3 mb-3">
-        <h5>Select Language</h5>
-        <select class="form-select" onchange="changeLanguage(this.value)">
+        <h5 data-lang="select_language">Select Language</h5>
+        <select class="form-select" id="languageSelect">
             <option value="en">English</option>
             <option value="bn">Bengali</option>
             <option value="hi">Hindi</option>
@@ -50,14 +50,14 @@ body{
     <!-- Privacy Policy -->
     <a href="privacy.html" class="text-decoration-none">
         <div class="card p-3 mb-3">
-            <h5>Privacy Policy</h5>
+            <h5 data-lang="privacy_policy">Privacy Policy</h5>
         </div>
     </a>
 
     <!-- About Us -->
     <a href="about.html" class="text-decoration-none">
         <div class="card p-3 mb-3">
-            <h5>About Us</h5>
+            <h5 data-lang="about">About Us</h5>
         </div>
     </a>
 
@@ -65,10 +65,64 @@ body{
 
 <script>
 
-function changeLanguage(lang){
-    localStorage.setItem("appLang", lang);
-    alert("Language Updated Successfully");
+/* ===============================
+   TRANSLATIONS
+=================================*/
+
+const translations = {
+    en: {
+        settings: "Settings",
+        select_language: "Select Language",
+        privacy_policy: "Privacy Policy",
+        about: "About Us"
+    },
+    bn: {
+        settings: "সেটিংস",
+        select_language: "ভাষা নির্বাচন করুন",
+        privacy_policy: "প্রাইভেসি পলিসি",
+        about: "আমাদের সম্পর্কে"
+    },
+    hi: {
+        settings: "सेटिंग्स",
+        select_language: "भाषा चुनें",
+        privacy_policy: "गोपनीयता नीति",
+        about: "हमारे बारे में"
+    }
+};
+
+
+/* ===============================
+   APPLY LANGUAGE FUNCTION
+=================================*/
+
+function applyLanguage(lang){
+    document.querySelectorAll("[data-lang]").forEach(el=>{
+        const key = el.getAttribute("data-lang");
+        el.innerText = translations[lang][key];
+    });
 }
+
+
+/* ===============================
+   INITIAL LOAD
+=================================*/
+
+const savedLang = localStorage.getItem("appLang") || "en";
+applyLanguage(savedLang);
+
+// Set dropdown selected value
+document.getElementById("languageSelect").value = savedLang;
+
+
+/* ===============================
+   CHANGE LANGUAGE
+=================================*/
+
+document.getElementById("languageSelect").addEventListener("change", function(){
+    const selectedLang = this.value;
+    localStorage.setItem("appLang", selectedLang);
+    applyLanguage(selectedLang);
+});
 
 </script>
 
